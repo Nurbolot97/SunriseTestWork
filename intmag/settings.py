@@ -76,8 +76,8 @@ WSGI_APPLICATION = 'intmag.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('NAME'),
-        'USER': config('USER'),
+        'NAME': 'sunrise',
+        'USER': config('USER_DB'),
         'PASSWORD': config('PASSWORD'),
         'HOST': 'localhost',
         'PORT': 5432

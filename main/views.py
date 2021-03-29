@@ -27,7 +27,7 @@ def review_create(request):
             review = form.save(commit=False)
             review.author = request.user
             review.save()
-            messages.add_message(request, messages.INFO, 'Ваше сообщение успешно отправлено!')
+            messages.add_message(request, messages.INFO, 'Your review was send successfully!')
             return redirect('all_reviews')
     else:
         form = MessageForm()
@@ -54,6 +54,7 @@ class CategoryProducts(View):
 class About(View):
 
     def get(self, request):
+        categories = TagCategory.objects.all()
         return render(request, 'about.html', locals())
 
 

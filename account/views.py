@@ -15,6 +15,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             auth_login(request, user)
+            messages.add_message(request, messages.INFO, 'You successfully signed up!')
             return redirect('create_profile')
     else:
         form = SignUpForm()
@@ -31,6 +32,7 @@ class NewProfileView(CreateView, LoginRequiredMixin):
         user = form.save(commit=False)
         user.user = self.request.user
         user.save()
+        messages.add_message(request, messages.INFO, 'You successfully create your profile!')
         return redirect('profile')
 
 
@@ -46,6 +48,7 @@ def update_profile(request, pk):
         form = UserProfileForm(request.POST, request.FILES, instance=request.user.profile)
         if form.is_valid():
             form.save()
+            messages.add_message(request, messages.INFO, 'You successfully update your profile!')
             return redirect('profile')
     else:
         form = UserProfileForm(instance=request.user.profile)

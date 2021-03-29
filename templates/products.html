@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+
+{% block title %}Category {{ category.title }} - {{ block.super }}{% endblock %}
+
+{% block main %}
+<section id="hero">
+    <div class="hero-container">
+        <h1>Welcome to {{ category.title }} category products page</h1>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+{% if cat_products %}
+<section id="portfolio" class="portfolio">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for prod in cat_products %}
+        <div class="col">
+          <div class="card">
+            <img src="{{ prod.photo.url }}" width="200px" height="250px" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ prod.title }}</h5>
+              <p class="card-text">{{ prod.description }}</p>
+              <p class="card-text" style="float: right;">Price: {{ prod.price }}
+                <a href="#" class="btn btn-danger bg-dark">Add to cart</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% else %}
+<h2 class="product not" style="text-align: center;">There are not products yet!</h2>
+{% endif %}
+{% endblock %}

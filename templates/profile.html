@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block title %}My Profile - {{ block.super }}{% endblock %}
+
+{% block main %}
+<section id="hero">
+    <div class="hero-container">
+      <div class="card mb-3 col-5 md-2" style="margin-top: 90px;">
+        <img src="{{ p.photo.url }}" width="300px" height="300px" class="card-img-top">
+        <div class="card-body" style="text-align: left;">
+          <h5 class="card-title" style="text-align: center;">Welcome to your profile</h5>
+          <h5 class="card-title">First name: {{ p.first_name }}</h5>
+          <h5 class="card-title">Last name: {{ p.last_name }}</h5>
+          <p class="card-text">Phone number: {{ p.phone_number }}</p>
+          <p class="card-text">About me: {{ p.biography }}</p>
+          <p class="card-text"><small class="text-muted">Registered at: {{ p.regis_at }}</small></p>
+        </div>
+    </div>
+    </div>
+</section>
+{% endblock %}
+{% block content %}
+{% endblock %}

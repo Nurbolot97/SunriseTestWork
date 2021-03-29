@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+
+{% block title %}All Reviews - {{ block.super }}{% endblock %}
+
+{% block main %}
+    <section id="hero">
+        <div class="hero-container">
+            <h1>Here you can see all reviews</h1>
+        </div>
+    </section>
+{% endblock %}
+{% block content %}
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for review in reviews %}
+                    <div class="col">
+                        <div class="card" style="height: 500px;">
+                            <img src="{{ review.author.profile.photo.url }}" width="100px" height="250px" class="card-img-top" alt="...">
+                            <div class="card-body">
+                            <h5 class="card-title" style="text-align: center;"><strong>{{ review.subject }}</strong></h5>
+                            <p class="card-text" style="text-align: center;">{{ review.review }}</p>
+                            <p class="card-text" style="text-align: right; font-size: small;"><strong>Published at:</strong> {{ review.pub_date }} by <strong>{{ review.author }}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+
+
